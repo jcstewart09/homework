@@ -1,0 +1,17 @@
+<h2> <font color=blue> Look at this awesome table of books! </font> </h2>
+
+<body>
+<% all_books = Book.read %>
+<% all_books.each do |book| %>
+<table border="1">
+  <tr>
+    <th> Title </th>
+    <th> Author </th>
+  </tr>
+  <tr>
+    <td> <%= book["title"] %> </td>
+    <td> <%= book["author"] %> </td>
+  </tr>>
+</table>
+</body>
+<% end %>
