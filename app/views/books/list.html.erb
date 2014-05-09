@@ -3,23 +3,30 @@
 <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 </head>
 
-<h2> <font color=blue> Look at this awesome table of books! </font> </h2>
+<h2> <font color=blue> Books for Sale! </font> </h2>
+
 
 <body>
-<% all_books = Book.read %>
+
 <div class="col-md-6">
 <table class="table table-bordered">
   <thead>
   <tr>
     <th> Title </th>
     <th> Author </th>
+    <th> Average Rating </th>
   </tr>
   </thead>
   <tbody>
-<% all_books.each do |book| %>
+<% the_book = Book.read %>
+<% the_book.each do |book| %>
+
   <tr>
     <td> <%= book["title"] %> </td>
     <td> <%= book["author"] %> </td>
+  <% name = book["title"] %>
+    <td> <%= Review.where("title" => name).average("rating") %>
+
   </tr>
 <% end %>
 </tbody>
