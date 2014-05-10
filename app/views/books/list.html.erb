@@ -22,7 +22,7 @@
 <% the_book.each do |book| %>
 
   <tr>
-    <td> <%= book["title"] %> </td>
+    <td> <%= link_to book["title"], "/books/#{book["id"]}" %> </td>
     <td> <%= book["author"] %> </td>
   <% name = book["title"] %>
     <td> <%= Review.where("title" => name).average("rating") %>
