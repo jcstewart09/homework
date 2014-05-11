@@ -7,15 +7,12 @@
 
 <body>
 
-<h3> <em> Editor's Pick! </em> </h2>
-
 <% editors_pick = Review.group("title").order("avg(rating) desc").first[:title] %>
 
-<strong> The current Editor's Pick is: <%= link_to editors_pick, "/books/#{Book.find_by("title" => editors_pick)[:id]}"  %> </strong>
-<br>
+<strong> Don't forget! The current Editor's Pick is: <%= link_to editors_pick, "/books/#{Book.find_by("title" => editors_pick)[:id]}"  %> </strong>
 <br>
 
-<h2> Here is our Book list! </h2>
+<h3> Here is our Book list! </h3>
 
 <div class="col-md-6">
 <table class="table table-bordered">
