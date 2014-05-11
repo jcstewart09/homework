@@ -3,10 +3,19 @@
 <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 </head>
 
-<h2> <font color=blue> Books for Sale! </font> </h2>
-
+<h1> <strong> <font color=blue> Books for Sale! </font> </strong> </h1>
 
 <body>
+
+<h3> <em> Editor's Pick! </em> </h2>
+
+<% editors_pick = Review.group("title").order("avg(rating) desc").first[:title] %>
+
+<strong> The current Editor's Pick is: <%= link_to editors_pick, "/books/#{Book.find_by("title" => editors_pick)[:id]}"  %> </strong>
+<br>
+<br>
+
+<h2> Here is our Book list! </h2>
 
 <div class="col-md-6">
 <table class="table table-bordered">

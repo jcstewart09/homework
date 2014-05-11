@@ -3,13 +3,14 @@
 <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 </head>
 
-<h1> <font color="purple"> <Strong> Books For Sale </Strong> </font> </h1>
+<h1> <font color="blue"> <Strong> Books For Sale </Strong> </font> </h1>
 
 <% the_id = params["id"] %>
 <% the_book = Book.read(the_id) %>
 
 <h3> <strong> Book: </strong> <%= the_book["title"] %> </h3>
 <h3> <strong> By: </strong> <%= the_book["author"] %> </h3>
+<br>
 
 <body>
 
@@ -18,6 +19,7 @@
 <% name = the_book["title"] %>
 
   <li> Average Star Rating: <%= Review.where("title" => name).average("rating") %> </li>
+<br>
 
 <h3> <em> Reviews: </em> </h3>
 
