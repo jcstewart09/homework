@@ -1,11 +1,17 @@
-<h1>Books For Sale </h1>
+<html>
+<head>
+<link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+</head>
+
+<h1> <font color="purple"> <Strong> Books For Sale </Strong> </font> </h1>
 
 <% the_id = params["id"] %>
 <% the_book = Book.read(the_id) %>
 
-<h2> Book: <%= the_book["title"] %> By: <%= the_book["author"] %> <h2>
+<h3> <strong> Book: </strong> <%= the_book["title"] %> </h3>
+<h3> <strong> By: </strong> <%= the_book["author"] %> </h3>
 
-<p>
+<body>
 
   <li> Price: <%= the_book["price"] %> </li>
 
@@ -13,13 +19,31 @@
 
   <li> Average Star Rating: <%= Review.where("title" => name).average("rating") %> </li>
 
+<h3> <em> Reviews: </em> </h3>
 
-<h3> Reviews: </h3>
+
+<div class="col-md-6">
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th> Star Rating </th>
+    <th> Review </th>
+  </tr>
+  </thead>
+  <tbody>
 
 <% all_reviews = Review.where("title" => the_book["title"]) %>
 <% all_reviews.each do |review| %>
-<li> <%= review ["review"] %> </li>
 
-</p>
+  <tr>
+    <td> <%= review["rating"] %> </td>
+    <td> <%= review ["review"] %> </li> </td>
+  </tr>
 
 <% end %>
+</tbody>
+</table>
+</div>
+</body>
+
+
